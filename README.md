@@ -12,6 +12,7 @@ This project implements various logical gates (AND, OR, NOT, XOR, If Then, If AN
 - **Case Insensitivity**: The program accepts both uppercase (`T`, `F`) and lowercase (`t`, `f`) inputs for `P` and `Q`. All inputs are automatically converted to lowercase.
 - **Input Validation**: The program ensures that only valid inputs (`t` or `f`) are accepted for `P` and `Q`. Invalid inputs prompt the user to re-enter the values.
 - **Interactive Menu**: Users can select from six logical operations or exit the program.
+- **Truth Table Generation**: The program can generate a complete truth table for all logical gates, showing the results for all possible combinations of `P` and `Q`.
 
 ## Usage
 
