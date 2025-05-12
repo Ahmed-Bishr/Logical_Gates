@@ -83,9 +83,9 @@ void IfANDOnlyIf(char p, char q) {
   }
 }
 
-void toLowerCase(char p, char q) {
-  p = tolower(p);
-  q = tolower(q);
+void toLowerCase(char *p, char *q) {
+  *p = tolower(*p);
+  *q = tolower(*q);
 }
 
 void showValues(char p, char q) {
@@ -152,6 +152,7 @@ int main() {
 
     printf("Enter P value (t/f)  : ");
     scanf(" %c", &p);
+    toLowerCase(&p, &q);
 
     if (p != 't' && p != 'f' && p != 'T' && p != 'F') {
       printf("Invalid input. Please enter 't' or 'f'.\n");
@@ -160,13 +161,14 @@ int main() {
 
     printf("Enter q value (t/f) : ");
     scanf(" %c", &q);
+    toLowerCase(&p, &q);
 
-    if (q != 't' && q != 'f' && q != 'T' && q != 'F') {
+    if (q != 't' && q != 'f') {
       printf("Invalid input. Please enter 't' or 'f'.\n");
       break;
     }
 
-    toLowerCase(p, q);
+    
 
     gatesChoices();
     printf("Choose Logical Gate : ");
