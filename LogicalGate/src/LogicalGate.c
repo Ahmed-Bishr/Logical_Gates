@@ -4,83 +4,37 @@
 const char f = 'f';
 const char t = 't';
 
-void AND(char p, char q) {
-  char result;
+char AND(char p, char q) {
   if (p == t && q == t) {
-    result = t;
-    printf("p and q = %c\n", result);
-  } else {
-    result = f;
-    printf("p and q = %c\n", result);
+    return t;
   }
+  return f;
 }
 
-void OR(char p, char q) {
-  char result;
+char OR(char p, char q) {
   if (p == f && q == f) {
-    result = f;
-    printf("p or q = %c\n", result);
-  } else {
-    result = t;
-    printf("p or q = %c\n", result);
+    return f;
   }
+  return t;
 }
 
-void NOT(char p, char q) {
-  char pResult;
-  char qResult;
-  if (p == t) {
-    pResult = f;
-  } else {
-    pResult = t;
-  }
-  if (q == t) {
-    qResult = f;
-  } else {
-    qResult = t;
-  }
-
-  printf("~p = %c\n", pResult);
-  printf("~q = %c\n", qResult);
+char NOT(char p) {
+  return (p == t) ? f : t;
 }
 
-void XOR(char p, char q) {
-  char result;
-  if (p == t && q == t) {
-    result = f;
-    printf("p xor q = %c\n", result);
-  } else if (p == f && q == f) {
-    result = f;
-    printf("p xor q = %c\n", result);
-  } else {
-    result = t;
-    printf("p xor q = %c\n", result);
+char XOR(char p, char q) {
+  if ((p == t && q == f) || (p == f && q == t)) {
+    return t;
   }
+  return f;
 }
 
-void IfThen(char p, char q) {
-  char result;
-  if (p == t && q == f) {
-    result = f;
-    printf("p -> q = %c\n", result);
-  } else {
-    result = t;
-    printf("p -> q = %c\n", result);
-  }
+char IfThen(char p, char q) {
+  return (p == t && q == f) ? f : t;
 }
 
-void IfANDOnlyIf(char p, char q) {
-  char result;
-  if (p == t && q == t) {
-    result = t;
-    printf("p <-> q = %c\n", result);
-  } else if (p == f && q == f) {
-    result = t;
-    printf("p <-> q = %c\n", result);
-  } else {
-    result = f;
-    printf("p <-> q = %c\n", result);
-  }
+char IfANDOnlyIf(char p, char q) {
+  return (p == q) ? t : f;
 }
 
 void toLowerCase(char *p, char *q) {
@@ -89,8 +43,7 @@ void toLowerCase(char *p, char *q) {
 }
 
 void showValues(char p, char q) {
-  printf("p = %c", p);
-  printf(" q = %c\n", q);
+  printf("p = %c, q = %c\n", p, q);
 }
 
 void welcomeUI() {
@@ -106,34 +59,60 @@ void gatesChoices() {
   printf("4. XOR  \n");
   printf("5. If Then  \n");
   printf("6. If AND Only If  \n");
+  printf("7. TruthTable  \n");
   printf("0. Exit  \n");
+}
+
+void truthTable(char p, char q) {
+  printf("\nTruth Table:\n");
+  printf("p q | AND OR NOTp NOTq XOR IF-> IFF\n");
+  printf("-----------------------------------\n");
+
+  for (int i = 0; i < 2; i++) {
+    for (int j = 0; j < 2; j++) {
+      printf("%c %c | ", p, q);
+      
+      printf("%c  ", AND(p, q));
+      printf("%c  ", OR(p, q));
+      printf("%c  ", NOT(p));
+      printf("%c  ", NOT(q));
+      printf("%c  ", XOR(p, q));
+      printf("%c  ", IfThen(p, q));
+      printf("%c  ", IfANDOnlyIf(p, q));
+      printf("\n");
+    }
+  }
 }
 
 void choices(int choice, char p, char q) {
   switch (choice) {
   case 1:
     showValues(p, q);
-    AND(p, q);
+    printf("AND result: %c\n", AND(p, q));
     break;
   case 2:
     showValues(p, q);
-    OR(p, q);
+    printf("OR result: %c\n", OR(p, q));
     break;
   case 3:
     showValues(p, q);
-    NOT(p, q);
+    printf("NOT p result: %c\n", NOT(p));
+    printf("NOT q result : %c\n", NOT(q));
     break;
   case 4:
     showValues(p, q);
-    XOR(p, q);
+    printf("XOR result: %c\n", XOR(p, q));
     break;
   case 5:
     showValues(p, q);
-    IfThen(p, q);
+    printf("If Then result: %c\n", IfThen(p, q));
     break;
   case 6:
     showValues(p, q);
-    IfANDOnlyIf(p, q);
+    printf("If AND Only If result: %c\n", IfANDOnlyIf(p, q));
+    break;
+  case 7:
+    truthTable(p, q);
     break;
   default:
     printf("Choice is invalid\n");
