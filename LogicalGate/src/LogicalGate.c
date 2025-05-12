@@ -39,8 +39,8 @@ void NOT(char p, char q) {
     qResult = t;
   }
 
-  printf("¬p = %c\n", pResult);
-  printf("   ¬q = %c\n", qResult);
+  printf("~p = %c\n", pResult);
+  printf("~q = %c\n", qResult);
 }
 
 void XOR(char p, char q) {
@@ -105,17 +105,16 @@ int main() {
   char q;
 
   while (1) {
-    
+
     do {
       printf("Enter P value (t/f)  : ");
       scanf(" %c", &p);
-      p = tolower(p); // Convert to lowercase
+
       if (p != 't' && p != 'f') {
         printf("Invalid input. Please enter 't' or 'f'.\n");
       }
       printf("Enter q value (t/f) : ");
       scanf(" %c", &q);
-      q = tolower(q); // Convert to lowercase
       if (q != 't' && q != 'f') {
         printf("Invalid input. Please enter 't' or 'f'.\n");
       }
