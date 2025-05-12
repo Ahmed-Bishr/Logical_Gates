@@ -168,8 +168,6 @@ int main() {
       break;
     }
 
-    
-
     gatesChoices();
     printf("Choose Logical Gate : ");
     scanf("%d", &choice);
