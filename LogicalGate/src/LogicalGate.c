@@ -105,40 +105,51 @@ int main() {
   char q;
 
   while (1) {
-    printf("Enter P value (t/f)  : ");
-    scanf(" %c", &p);
-    printf("Enter q value (t/f) : ");
-    scanf(" %c", &q);
+    
+    do {
+      printf("Enter P value (t/f)  : ");
+      scanf(" %c", &p);
+      p = tolower(p); // Convert to lowercase
+      if (p != 't' && p != 'f') {
+        printf("Invalid input. Please enter 't' or 'f'.\n");
+      }
+      printf("Enter q value (t/f) : ");
+      scanf(" %c", &q);
+      q = tolower(q); // Convert to lowercase
+      if (q != 't' && q != 'f') {
+        printf("Invalid input. Please enter 't' or 'f'.\n");
+      }
+    } while (p != 't' && p != 'f' && q != 't' && q != 'f');
 
     gatesChoices();
     printf("Choose Logical Gate : ");
     scanf("%d", &choice);
 
     switch (choice) {
-      case 1:
-        AND(p, q);
-        break;
-      case 2:
-        OR(p, q);
-        break;
-      case 3:
-        NOT(p, q);
-        break;
-      case 4:
-        XOR(p, q);
-        break;
-      case 5:
-        IfThen(p, q);
-        break;
-      case 6:
-        IfANDOnlyIf(p, q);
-        break;
-      case 0:
-        printf("Goodbye!!\n");
-        return 0;
-      default:
-        printf("Choice is invalid\n");
-        break;
+    case 1:
+      AND(p, q);
+      break;
+    case 2:
+      OR(p, q);
+      break;
+    case 3:
+      NOT(p, q);
+      break;
+    case 4:
+      XOR(p, q);
+      break;
+    case 5:
+      IfThen(p, q);
+      break;
+    case 6:
+      IfANDOnlyIf(p, q);
+      break;
+    case 0:
+      printf("Goodbye!!\n");
+      return 0;
+    default:
+      printf("Choice is invalid\n");
+      break;
     }
   }
 
