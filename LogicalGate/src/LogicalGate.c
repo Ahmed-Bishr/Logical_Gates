@@ -1,3 +1,4 @@
+#include <ctype.h>
 #include <stdio.h>
 
 char f = 'f';
@@ -47,13 +48,13 @@ void XOR(char p, char q) {
   char result;
   if (p == t && q == t) {
     result = f;
-    printf("p ⊕ q = %c\n", result);
+    printf("p xor q = %c\n", result);
   } else if (p == f && q == f) {
     result = f;
-    printf("p ⊕ q = %c\n", result);
+    printf("p xor q = %c\n", result);
   } else {
     result = t;
-    printf("p ⊕ q = %c\n", result);
+    printf("p xor q = %c\n", result);
   }
 }
 
@@ -61,10 +62,10 @@ void IfThen(char p, char q) {
   char result;
   if (p == t && q == f) {
     result = f;
-    printf("p → q = %c\n", result);
+    printf("p -> q = %c\n", result);
   } else {
     result = t;
-    printf("p → q = %c\n", result);
+    printf("p -> q = %c\n", result);
   }
 }
 
@@ -72,20 +73,30 @@ void IfANDOnlyIf(char p, char q) {
   char result;
   if (p == t && q == t) {
     result = t;
-    printf("p ↔ q = %c\n", result);
+    printf("p <-> q = %c\n", result);
   } else if (p == f && q == f) {
     result = t;
-    printf("p ↔ q = %c\n", result);
+    printf("p <-> q = %c\n", result);
   } else {
     result = f;
-    printf("p ↔ q = %c\n", result);
+    printf("p <-> q = %c\n", result);
   }
 }
 
+void toLowerCase(char p, char q) {
+  p = tolower(p);
+  q = tolower(q);
+}
+
+void showValues(char p, char q) {
+  printf("p = %c", p);
+  printf(" q = %c\n", q);
+}
+
 void welcomeUI() {
-  printf("=========================== \n");
+  printf("====================================== \n");
   printf("Welcome to the Project (Logical gates) \n");
-  printf("=========================== \n");
+  printf("====================================== \n");
 }
 
 void gatesChoices() {
@@ -95,6 +106,7 @@ void gatesChoices() {
   printf("4. XOR  \n");
   printf("5. If Then  \n");
   printf("6. If AND Only If  \n");
+  printf("0. Exit  \n");
 }
 
 int main() {
@@ -106,19 +118,23 @@ int main() {
 
   while (1) {
 
-    do {
-      printf("Enter P value (t/f)  : ");
-      scanf(" %c", &p);
+    printf("Enter P value (t/f)  : ");
+    scanf(" %c", &p);
 
-      if (p != 't' && p != 'f') {
-        printf("Invalid input. Please enter 't' or 'f'.\n");
-      }
-      printf("Enter q value (t/f) : ");
-      scanf(" %c", &q);
-      if (q != 't' && q != 'f') {
-        printf("Invalid input. Please enter 't' or 'f'.\n");
-      }
-    } while (p != 't' && p != 'f' && q != 't' && q != 'f');
+    if (p != 't' && p != 'f' && p != 'T' && p != 'F') {
+      printf("Invalid input. Please enter 't' or 'f'.\n");
+      break;
+    }
+
+    printf("Enter q value (t/f) : ");
+    scanf(" %c", &q);
+
+    if (q != 't' && q != 'f' && q != 'T' && q != 'F') {
+      printf("Invalid input. Please enter 't' or 'f'.\n");
+      break;
+    }
+
+    toLowerCase(p, q);
 
     gatesChoices();
     printf("Choose Logical Gate : ");
@@ -126,21 +142,27 @@ int main() {
 
     switch (choice) {
     case 1:
+      showValues(p, q);
       AND(p, q);
       break;
     case 2:
+      showValues(p, q);
       OR(p, q);
       break;
     case 3:
+      showValues(p, q);
       NOT(p, q);
       break;
     case 4:
+      showValues(p, q);
       XOR(p, q);
       break;
     case 5:
+      showValues(p, q);
       IfThen(p, q);
       break;
     case 6:
+      showValues(p, q);
       IfANDOnlyIf(p, q);
       break;
     case 0:
