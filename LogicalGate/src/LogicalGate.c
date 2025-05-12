@@ -109,6 +109,38 @@ void gatesChoices() {
   printf("0. Exit  \n");
 }
 
+void choices(int choice, char p, char q) {
+  switch (choice) {
+  case 1:
+    showValues(p, q);
+    AND(p, q);
+    break;
+  case 2:
+    showValues(p, q);
+    OR(p, q);
+    break;
+  case 3:
+    showValues(p, q);
+    NOT(p, q);
+    break;
+  case 4:
+    showValues(p, q);
+    XOR(p, q);
+    break;
+  case 5:
+    showValues(p, q);
+    IfThen(p, q);
+    break;
+  case 6:
+    showValues(p, q);
+    IfANDOnlyIf(p, q);
+    break;
+  default:
+    printf("Choice is invalid\n");
+    break;
+  }
+}
+
 int main() {
   welcomeUI();
 
@@ -140,37 +172,11 @@ int main() {
     printf("Choose Logical Gate : ");
     scanf("%d", &choice);
 
-    switch (choice) {
-    case 1:
-      showValues(p, q);
-      AND(p, q);
-      break;
-    case 2:
-      showValues(p, q);
-      OR(p, q);
-      break;
-    case 3:
-      showValues(p, q);
-      NOT(p, q);
-      break;
-    case 4:
-      showValues(p, q);
-      XOR(p, q);
-      break;
-    case 5:
-      showValues(p, q);
-      IfThen(p, q);
-      break;
-    case 6:
-      showValues(p, q);
-      IfANDOnlyIf(p, q);
-      break;
-    case 0:
+    if (choice == 0) {
       printf("Goodbye!!\n");
       return 0;
-    default:
-      printf("Choice is invalid\n");
-      break;
+    } else {
+      choices(choice, p, q);
     }
   }
 
