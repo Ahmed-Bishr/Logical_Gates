@@ -13,6 +13,13 @@ This project implements various logical gates (AND, OR, NOT, XOR, If Then, If AN
 - **Input Validation**: The program ensures that only valid inputs (`t` or `f`) are accepted for `P` and `Q`. Invalid inputs prompt the user to re-enter the values.
 - **Interactive Menu**: Users can select from six logical operations or exit the program.
 
+## Coding Standards
+
+This project adheres to **NASA's C Coding Standards**, ensuring:
+- Readability and maintainability of the code.
+- Proper use of variable naming conventions.
+- Consistent formatting and indentation.
+- Robust error handling and input validation.
 
 ## Usage
 
